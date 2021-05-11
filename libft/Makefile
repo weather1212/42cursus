@@ -6,19 +6,22 @@
 #    By: hoyu <hoyu@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/07 16:07:25 by hoyu              #+#    #+#              #
-#    Updated: 2021/05/07 18:20:16 by hoyu             ###   ########.fr        #
+#    Updated: 2021/05/11 21:49:26 by hoyu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 TARGET		=	libft.a
-SRCS		=	strlen.c
-				strlcpy.c
+SRCS		=	ft_strlen.c		\
+				ft_strlcpy.c	\
+				ft_strlcat.c	\
+				ft_strncmp.c	\
+				ft_strchr.c		\
 
-#SRCS_B		= 
+#SRCS_BONUS	= 
 
 OBJS		=	$(SRCS:.c=.o)
 
-OBJS_B		=	$(SRCS_B:.c=.o)
+OBJS_BONUS	=	$(SRCS_BONUS:.c=.o)
 
 INCLUDES	=	./libft.h
 CC			=	gcc
@@ -32,13 +35,15 @@ all : $(TARGET)
 $(TARGET) : $(OBJS)
 	ar crs $@ $^
 
-bonus : $(OBJS_B)
+bonus : $(OBJS) $(OBJS_BONUS)
 	ar crs $(TARGET) $^
 
 clean :
-	rm -f $(OBJS) $(OBJS_B)
+	rm -f $(OBJS) $(OBJS_BONUS)
 
 fclean : clean
 	rm -f $(TARGET)
 
 re : fclean all
+
+.PHONY : all bonus clean fclean re
