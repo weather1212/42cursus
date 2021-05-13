@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoyu <hoyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/11 21:12:20 by hoyu              #+#    #+#             */
-/*   Updated: 2021/05/13 13:14:44 by hoyu             ###   ########.fr       */
+/*   Created: 2021/05/13 19:12:59 by hoyu              #+#    #+#             */
+/*   Updated: 2021/05/13 22:37:19 by hoyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	int length;
+	char		*dst_temp;
+	const char	*src_temp;
 
-	length = ft_strlen(s);
-	if ((char)c == '\0')
-		return ((char *)s + length);
-	while (*s)
+	if (dst == NULL && src == NULL)
+		return (NULL);
+
+	dst_temp = dst;
+	src_temp = src;
+	if (dst <= src)
 	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s++;
+		while (len--)
+			*dst_temp++ = *src_temp++;
 	}
-	return (NULL);
+	else
+	{
+		dst_temp += len;
+		src_temp += len;
+		while (len--)
+			*--dst_temp = *--src_temp;
+	}
+	return (dst);
 }

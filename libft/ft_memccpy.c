@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoyu <hoyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/11 21:12:20 by hoyu              #+#    #+#             */
-/*   Updated: 2021/05/13 13:14:44 by hoyu             ###   ########.fr       */
+/*   Created: 2021/05/13 18:42:40 by hoyu              #+#    #+#             */
+/*   Updated: 2021/05/13 19:11:44 by hoyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	int length;
+	unsigned char		*result;
+	const unsigned char	*src_temp;
 
-	length = ft_strlen(s);
-	if ((char)c == '\0')
-		return ((char *)s + length);
-	while (*s)
+	result = dst;
+	src_temp = src;
+	while (n-- > 0 && *src_temp)
 	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s++;
+		if (*src_temp == c)
+		{
+			*result = *src_temp;
+			return (++result);
+		}
+		*result++ = *src_temp++;
 	}
 	return (NULL);
 }
