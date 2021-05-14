@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hoyu <hoyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/13 21:00:25 by hoyu              #+#    #+#             */
-/*   Updated: 2021/05/14 16:18:30 by hoyu             ###   ########.fr       */
+/*   Created: 2021/05/14 19:32:56 by hoyu              #+#    #+#             */
+/*   Updated: 2021/05/14 19:39:30 by hoyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	const unsigned char *s1_temp;
-	const unsigned char *s2_temp;
+	char	*result;
+	size_t	length;
+	char	*temp;
 
-	s1_temp = s1;
-	s2_temp = s2;
-	while (n-- > 0)
-	{
-		if (*s1_temp == *s2_temp)
-		{
-			s1_temp++;
-			s2_temp++;
-		}
-		else
-			return (*s1_temp - *s2_temp);
-	}
-	return (0);
+	length = ft_strlen(s1) + ft_strlen(s2);
+	if (!(result = malloc(sizeof(char) * length + 1)))
+		return (NULL);
+	temp = result;
+	while (*s1)
+		*temp++ = *s1++;
+	while (*s2)
+		*temp++ = *s2++;
+	*temp = '\0';
+	return (result);
 }

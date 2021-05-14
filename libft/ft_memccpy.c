@@ -6,7 +6,7 @@
 /*   By: hoyu <hoyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 18:42:40 by hoyu              #+#    #+#             */
-/*   Updated: 2021/05/13 19:11:44 by hoyu             ###   ########.fr       */
+/*   Updated: 2021/05/14 16:09:46 by hoyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 
 	result = dst;
 	src_temp = src;
-	while (n-- > 0 && *src_temp)
+	while (n-- > 0)
 	{
-		if (*src_temp == c)
+		if (*src_temp == (unsigned char)c)
 		{
 			*result = *src_temp;
 			return (++result);

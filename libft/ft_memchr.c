@@ -6,7 +6,7 @@
 /*   By: hoyu <hoyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 20:48:53 by hoyu              #+#    #+#             */
-/*   Updated: 2021/05/13 20:59:36 by hoyu             ###   ########.fr       */
+/*   Updated: 2021/05/14 16:17:37 by hoyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	const unsigned char	*result;
 
 	result = s;
-	while (n-- > 0 && *result)
+	while (n-- > 0)
 	{
 		if (*result == (unsigned char)c)
 			return ((void *)result);
