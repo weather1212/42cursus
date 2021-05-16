@@ -12,79 +12,54 @@
 
 #include "libft.h"
 
-int		ft_is_separator(char c, char *charset)
-{
-	int	i;
-
-	i = 0;
-	while (charset[i])
-	{
-		if (c == charset[i])
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-int		ft_count_words(char *str, char *charset)
+int		ft_count_words(char *s, char c)
 {
 	int	count;
-	int	i;
 
 	count = 0;
-	i = 0;
-	while (str[i])
-	{
-		while (str[i] && ft_is_separator(str[i], charset))
-			i++;
-		if (str[i] && !ft_is_separator(str[i], charset))
-		{
-			while (str[i] && !ft_is_separator(str[i], charset))
-				i++;
-			count++;
-		}
-	}
+  while ((s = ft_strchr(s, c) + 1))
+    count++;
 	return (count);
 }
 
-char	*ft_strdup(char *str, char *charset)
+char	*ft_strdup_sep(char *s, char c)
 {
 	char	*word;
 	int		i;
 
 	i = 0;
-	while (str[i] && !ft_is_separator(str[i], charset))
+	while (s[i] && (s[i] != c))
 		i++;
 	word = malloc(sizeof(char) * (i + 1));
 	i = 0;
-	while (str[i] && !ft_is_separator(str[i], charset))
+	while (s[i] && (s[i] != c))
 	{
-		word[i] = str[i];
+		word[i] = s[i];
 		i++;
 	}
 	word[i] = '\0';
 	return (word);
 }
 
-char	**ft_split(char *str, char *charset)
+char	**ft_split(char *s, char c)
 {
 	int		i;
 	char	**result;
 
 	i = 0;
-	result = malloc(sizeof(char *) * (ft_count_words(str, charset) + 1));
-	while (*str)
+	result = malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
+	while (*s)
 	{
-		while (*str && ft_is_separator(*str, charset))
-			str++;
-		if (*str && !ft_is_separator(*str, charset))
+		while (*s && (*s == c))
+			s++;
+		if (*s && (*s != c))
 		{
-			result[i] = ft_strdup(str, charset);
-			i++;
-			while (*str && !ft_is_separator(*str, charset))
-				str++;
+			result[i] = ft_strdup_sep(s, c);
+			while (*s && (*s != c))
+				s++;
+      i++;
 		}
 	}
-	result[i] = 0;
+	result[i] = NULL;
 	return (result);
 }
