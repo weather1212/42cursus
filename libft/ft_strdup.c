@@ -6,7 +6,7 @@
 /*   By: hoyu <hoyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 21:51:09 by hoyu              #+#    #+#             */
-/*   Updated: 2021/05/13 22:10:25 by hoyu             ###   ########.fr       */
+/*   Updated: 2021/05/17 21:41:19 by hoyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strdup(const char *s1)
 	size_t	length;
 
 	length = ft_strlen(s1);
-	if (!(result = malloc((sizeof(char) * length) + 1)))
+	if (!(result = malloc(sizeof(char) * (length + 1))))
 		return (NULL);
 	temp = result;
 	while (*s1)

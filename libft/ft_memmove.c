@@ -6,7 +6,7 @@
 /*   By: hoyu <hoyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 19:12:59 by hoyu              #+#    #+#             */
-/*   Updated: 2021/05/13 22:37:19 by hoyu             ###   ########.fr       */
+/*   Updated: 2021/05/17 16:02:39 by hoyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 
 	if (dst == NULL && src == NULL)
 		return (NULL);
-
 	dst_temp = dst;
 	src_temp = src;
 	if (dst <= src)

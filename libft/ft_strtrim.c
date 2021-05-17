@@ -6,13 +6,13 @@
 /*   By: hoyu <hoyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 19:40:16 by hoyu              #+#    #+#             */
-/*   Updated: 2021/05/14 21:08:13 by hoyu             ###   ########.fr       */
+/*   Updated: 2021/05/17 16:04:14 by hoyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char *ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	start;
 	size_t	end;
@@ -31,5 +31,5 @@ char *ft_strtrim(char const *s1, char const *set)
 			return (NULL);
 		ft_strlcpy(result, &s1[start], ((end - start + 1) + 1));
 	}
-		return (result);
+	return (result);
 }

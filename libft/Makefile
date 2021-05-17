@@ -6,7 +6,7 @@
 #    By: hoyu <hoyu@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/07 16:07:25 by hoyu              #+#    #+#              #
-#    Updated: 2021/05/14 21:09:15 by hoyu             ###   ########.fr        #
+#    Updated: 2021/05/17 20:01:05 by hoyu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,8 +38,13 @@ SRCS		=	ft_strlen.c		\
 				ft_substr.c		\
 				ft_strjoin.c	\
 				ft_strtrim.c	\
-        ft_split.c    \
-        ft_itoa.c     \
+				ft_split.c		\
+				ft_itoa.c		\
+				ft_strmapi.c	\
+				ft_putchar_fd.c	\
+				ft_putstr_fd.c	\
+				ft_putendl_fd.c	\
+				ft_putnbr_fd.c	\
 
 #SRCS_BONUS	= 
 
