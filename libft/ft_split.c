@@ -6,7 +6,7 @@
 /*   By: hoyu <hoyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 21:26:24 by hoyu              #+#    #+#             */
-/*   Updated: 2021/05/17 21:26:15 by hoyu             ###   ########.fr       */
+/*   Updated: 2021/05/19 16:02:01 by hoyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,17 @@ int		ft_count_words(char const *s, char c)
 	int	i;
 
 	count = 0;
-	i = 0;
-	while (s[i])
+	if (*s)
 	{
-		if ((s[i] == c) && (s[i + 1] != c) && (s[i + 1] != 0))
+		if (s[0] != c)
 			count++;
-		i++;
+		i = 1;
+		while (s[i])
+		{
+			if ((s[i] != c) && (s[i - 1] == c))
+				count++;
+			i++;
+		}
 	}
 	return (count);
 }
@@ -50,22 +55,26 @@ char	*ft_strdup_sep(char const *s, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	int		i;
 	char	**result;
+	int		i;
 
+	result = 0;
 	i = 0;
-	if (!(result = malloc(sizeof(char *) * (ft_count_words(s, c) + 1))))
-		return (NULL);
-	while (*s)
+	if (s)
 	{
-		while (*s && (*s == c))
-			s++;
-		if (*s && (*s != c))
+		if (!(result = malloc(sizeof(char *) * (ft_count_words(s, c) + 1))))
+			return (NULL);
+		while (*s)
 		{
-			result[i] = ft_strdup_sep(s, c);
-			while (*s && (*s != c))
+			while (*s && (*s == c))
 				s++;
-			i++;
+			if (*s && (*s != c))
+			{
+				result[i] = ft_strdup_sep(s, c);
+				while (*s && (*s != c))
+					s++;
+				i++;
+			}
 		}
 	}
 	result[i] = NULL;

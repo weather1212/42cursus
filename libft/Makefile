@@ -6,11 +6,12 @@
 #    By: hoyu <hoyu@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/07 16:07:25 by hoyu              #+#    #+#              #
-#    Updated: 2021/05/17 20:01:05 by hoyu             ###   ########.fr        #
+#    Updated: 2021/05/19 14:38:58 by hoyu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-TARGET		=	libft.a
+NAME		=	libft.a
+
 SRCS		=	ft_strlen.c		\
 				ft_strlcpy.c	\
 				ft_strlcat.c	\
@@ -46,7 +47,15 @@ SRCS		=	ft_strlen.c		\
 				ft_putendl_fd.c	\
 				ft_putnbr_fd.c	\
 
-#SRCS_BONUS	= 
+SRCS_BONUS	=	ft_lstnew.c			\
+				ft_lstadd_front.c	\
+				ft_lstsize.c		\
+				ft_lstlast.c		\
+				ft_lstadd_back.c	\
+				ft_lstdelone.c		\
+				ft_lstclear.c		\
+				ft_lstiter.c		\
+				ft_lstmap.c			\
 
 OBJS		=	$(SRCS:.c=.o)
 
@@ -56,22 +65,22 @@ INCLUDES	=	./libft.h
 CC			=	gcc
 CFLAG		=	-Wall -Wextra -Werror
 
-all : $(TARGET)
+all : $(NAME)
 
 %.o : %.c
-	$(CC) $(CFLAG) -c $< -o $@
+	$(CC) $(CFLAG) -c $< -o $@ -I $(INCLUDES)
 
-$(TARGET) : $(OBJS)
+$(NAME) : $(OBJS)
 	ar crs $@ $^
 
 bonus : $(OBJS) $(OBJS_BONUS)
-	ar crs $(TARGET) $^
+	ar crs $(NAME) $^
 
 clean :
 	rm -f $(OBJS) $(OBJS_BONUS)
 
 fclean : clean
-	rm -f $(TARGET)
+	rm -f $(NAME)
 
 re : fclean all
 
