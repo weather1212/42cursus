@@ -6,7 +6,7 @@
 #    By: hoyu <hoyu@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/07 16:07:25 by hoyu              #+#    #+#              #
-#    Updated: 2021/05/19 14:38:58 by hoyu             ###   ########.fr        #
+#    Updated: 2021/05/28 14:36:14 by hoyu             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,16 +65,22 @@ INCLUDES	=	./libft.h
 CC			=	gcc
 CFLAG		=	-Wall -Wextra -Werror
 
+ifdef WITH_BONUS
+	OBJ_FILES = $(OBJS) $(OBJS_BONUS)
+else
+	OBJ_FILES = $(OBJS)
+endif
+
 all : $(NAME)
 
 %.o : %.c
 	$(CC) $(CFLAG) -c $< -o $@ -I $(INCLUDES)
 
-$(NAME) : $(OBJS)
+$(NAME) : $(OBJ_FILES)
 	ar crs $@ $^
 
-bonus : $(OBJS) $(OBJS_BONUS)
-	ar crs $(NAME) $^
+bonus :
+	make WITH_BONUS=1 all
 
 clean :
 	rm -f $(OBJS) $(OBJS_BONUS)

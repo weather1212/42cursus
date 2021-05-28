@@ -6,7 +6,7 @@
 /*   By: hoyu <hoyu@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/14 21:26:24 by hoyu              #+#    #+#             */
-/*   Updated: 2021/05/19 16:02:01 by hoyu             ###   ########.fr       */
+/*   Updated: 2021/05/26 20:55:31 by hoyu             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,14 @@ char	*ft_strdup_sep(char const *s, char c)
 	return (word);
 }
 
+char	**ptr_free(char **result)
+{
+	while (*result)
+		free(*result++);
+	free(result);
+	return (NULL);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**result;
@@ -70,7 +78,8 @@ char	**ft_split(char const *s, char c)
 				s++;
 			if (*s && (*s != c))
 			{
-				result[i] = ft_strdup_sep(s, c);
+				if (!(result[i] = ft_strdup_sep(s, c)))
+					return (ptr_free(result));
 				while (*s && (*s != c))
 					s++;
 				i++;
